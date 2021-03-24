@@ -44,8 +44,7 @@ global.phaserOnNodeFPS = 60
 
 const animationFrame = (cb: any) => {
   if (typeof cb !== 'function') return 0 // this line saves a lot of cpu
-  window.setTimeout(() => cb(0), 1000 / global.phaserOnNodeFPS)
-  return 0
+  return window.setTimeout(() => cb(0), 1000 / global.phaserOnNodeFPS)
 }
 export { animationFrame }
 
@@ -55,3 +54,7 @@ window.requestAnimationFrame = cb => {
 
 const requestAnimationFrame = window.requestAnimationFrame
 export { requestAnimationFrame }
+
+window.cancelAnimationFrame = (timeOutId: number) => {
+  window.clearTimeout(timeOutId);
+}
